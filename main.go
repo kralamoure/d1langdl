@@ -25,7 +25,7 @@ const (
 	programName        = "d1langdl"
 	programDescription = "d1langdl is a program for downloading Dofus 1 lang files."
 	programMoreInfo    = "https://github.com/kralamoure/d1langdl"
-	programVersion     = "v0.0.0"
+	programVersion     = "v0.1.0"
 )
 
 var (
