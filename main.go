@@ -25,15 +25,13 @@ const (
 	programName        = "d1langdl"
 	programDescription = "d1langdl is a program for downloading Dofus 1 lang files."
 	programMoreInfo    = "https://github.com/kralamoure/d1langdl"
-	programVersion     = "v0.1.0"
 )
 
 var (
-	printHelp    bool
-	printVersion bool
-	debug        bool
-	dataUrlStr   string
-	languages    []string
+	printHelp  bool
+	debug      bool
+	dataUrlStr string
+	languages  []string
 )
 
 var (
@@ -62,10 +60,6 @@ func main() {
 
 	if printHelp {
 		fmt.Println(help(flagSet.FlagUsages()))
-		return
-	}
-	if printVersion {
-		fmt.Println(programVersion)
 		return
 	}
 
@@ -229,7 +223,6 @@ func help(flagUsages string) string {
 func initFlagSet() {
 	flagSet = pflag.NewFlagSet("d1login", pflag.ContinueOnError)
 	flagSet.BoolVarP(&printHelp, "help", "h", false, "Print usage information")
-	flagSet.BoolVarP(&printVersion, "version", "v", false, "Print version")
 	flagSet.BoolVarP(&debug, "debug", "d", false, "Enable debug mode")
 	flagSet.StringVarP(&dataUrlStr, "url", "u", "https://dofusretro.cdn.ankama.com/", "Data URL")
 	flagSet.StringSliceVarP(&languages, "languages", "l", allLanguages, "Language codes, separated by comma")
