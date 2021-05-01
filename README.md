@@ -1,6 +1,6 @@
 # d1langdl
 
-`d1langdl` is a program for downloading Dofus 1 lang files.
+`d1langdl` is a program for downloading Dofus 1 lang files concurrently.
 
 ## Requirements
 
@@ -30,7 +30,7 @@ d1langdl --help
 ### Output
 
 ```text
-d1langdl is a program for downloading Dofus 1 lang files.
+d1langdl is a program for downloading Dofus 1 lang files concurrently.
 
 Find more information at: https://github.com/kralamoure/d1langdl
 
