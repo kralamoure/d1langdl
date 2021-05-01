@@ -23,7 +23,7 @@ import (
 
 const (
 	programName        = "d1langdl"
-	programDescription = "d1langdl is a program for downloading Dofus 1 lang files."
+	programDescription = "d1langdl is a program for concurrently downloading Dofus 1 lang files."
 	programMoreInfo    = "https://github.com/kralamoure/d1langdl"
 )
 
