@@ -1,6 +1,6 @@
-# d1langdl
+# retrolangdl
 
-`d1langdl` is a program for concurrently downloading Dofus 1 lang files.
+`retrolangdl` is a program for concurrently downloading Dofus Retro lang files.
 
 ## Requirements
 
@@ -10,29 +10,29 @@
 ## Build
 
 ```sh
-git clone https://github.com/kralamoure/d1langdl
-cd d1langdl
+git clone https://github.com/kralamoure/retrolangdl
+cd retrolangdl
 go build
 ```
 
 ## Installation
 
 ```sh
-go get -u -v github.com/kralamoure/d1langdl
+go get -u -v github.com/kralamoure/retrolangdl
 ```
 
 ## Usage
 
 ```sh
-d1langdl --help
+retrolangdl --help
 ```
 
 ### Output
 
 ```text
-d1langdl is a program for concurrently downloading Dofus 1 lang files.
+retrolangdl is a program for concurrently downloading Dofus Retro lang files.
 
-Find more information at: https://github.com/kralamoure/d1langdl
+Find more information at: https://github.com/kralamoure/retrolangdl
 
 Options:
   -h, --help                Print usage information
@@ -40,5 +40,5 @@ Options:
   -u, --url string          Data URL (default "https://dofusretro.cdn.ankama.com/")
   -l, --languages strings   Language codes, separated by comma (default [de,en,es,fr,it,nl,pt])
 
-Usage: d1langdl [options]
+Usage: retrolangdl [options]
 ```

@@ -1,4 +1,4 @@
-module github.com/kralamoure/d1langdl
+module github.com/kralamoure/retrolangdl
 
 go 1.16
 

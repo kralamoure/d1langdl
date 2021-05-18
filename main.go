@@ -22,9 +22,9 @@ import (
 )
 
 const (
-	programName        = "d1langdl"
-	programDescription = "d1langdl is a program for concurrently downloading Dofus 1 lang files."
-	programMoreInfo    = "https://github.com/kralamoure/d1langdl"
+	programName        = "retrolangdl"
+	programDescription = "retrolangdl is a program for concurrently downloading Dofus Retro lang files."
+	programMoreInfo    = "https://github.com/kralamoure/retrolangdl"
 )
 
 var (
@@ -221,7 +221,7 @@ func help(flagUsages string) string {
 }
 
 func initFlagSet() {
-	flagSet = pflag.NewFlagSet("d1login", pflag.ContinueOnError)
+	flagSet = pflag.NewFlagSet("retrologin", pflag.ContinueOnError)
 	flagSet.BoolVarP(&printHelp, "help", "h", false, "Print usage information")
 	flagSet.BoolVarP(&debug, "debug", "d", false, "Enable debug mode")
 	flagSet.StringVarP(&dataUrlStr, "url", "u", "https://dofusretro.cdn.ankama.com/", "Data URL")
