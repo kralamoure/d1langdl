@@ -1,5 +1,7 @@
 # retrolangdl
 
+[![ci](https://github.com/kralamoure/retrolangdl/actions/workflows/ci.yml/badge.svg)](https://github.com/kralamoure/retrolangdl/actions/workflows/ci.yml)
+
 `retrolangdl` is a program for concurrently downloading Dofus Retro lang files.
 
 ## Requirements
