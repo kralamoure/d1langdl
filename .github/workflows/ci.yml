@@ -43,9 +43,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Print DOCKER_BUILD
+      - name: Print DOCKER_BUILDKIT
         run: |
-          echo $DOCKER_BUILD
+          echo $DOCKER_BUILDKIT
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
@@ -57,9 +57,9 @@ jobs:
           # Note the mode=max
           # https://github.com/moby/buildkit#--export-cache-options
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
-      - name: Print DOCKER_BUILD again
+      - name: Print DOCKER_BUILDKIT again
         run: |
-          echo $DOCKER_BUILD
+          echo $DOCKER_BUILDKIT
       - # Temp fix
         # https://github.com/docker/build-push-action/issues/252
         # https://github.com/moby/buildkit/issues/1896
