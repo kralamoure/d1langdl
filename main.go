@@ -221,7 +221,7 @@ func help(flagUsages string) string {
 }
 
 func initFlagSet() {
-	flagSet = pflag.NewFlagSet("retrologin", pflag.ContinueOnError)
+	flagSet = pflag.NewFlagSet("retrolangdl", pflag.ContinueOnError)
 	flagSet.BoolVarP(&printHelp, "help", "h", false, "Print usage information")
 	flagSet.BoolVarP(&debug, "debug", "d", false, "Enable debug mode")
 	flagSet.StringVarP(&dataUrlStr, "url", "u", "https://dofusretro.cdn.ankama.com/", "Data URL")
