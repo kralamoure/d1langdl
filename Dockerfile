@@ -9,7 +9,7 @@ FROM ubuntu:20.04
 
 LABEL org.opencontainers.image.source="https://github.com/kralamoure/retrolangdl"
 
-RUN apt update && apt upgrade -y
+RUN apt-get update && apt-get upgrade -y
 
 WORKDIR /app
 COPY --from=builder /go/bin/ .
