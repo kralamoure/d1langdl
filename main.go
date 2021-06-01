@@ -35,7 +35,7 @@ var (
 )
 
 var (
-	outDir       = "out"
+	outDir       = "."
 	allLanguages = []string{"de", "en", "es", "fr", "it", "nl", "pt"}
 	client       = &http.Client{}
 	wg           *sync.WaitGroup
