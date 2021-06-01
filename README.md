@@ -4,11 +4,6 @@
 
 `retrolangdl` is a program for concurrently downloading Dofus Retro lang files.
 
-## Requirements
-
-- [Git](https://git-scm.com/)
-- [Go](https://golang.org/)
-
 ## Build
 
 ```sh
@@ -20,7 +15,7 @@ go build
 ## Installation
 
 ```sh
-go get -u -v github.com/kralamoure/retrolangdl
+go install github.com/kralamoure/retrolangdl@latest
 ```
 
 ## Usage
