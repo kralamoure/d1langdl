@@ -20,7 +20,8 @@ jobs:
         with:
           go-version: '1.16.*'
 
-      - id: cache_paths
+      - name: Define cache paths
+        id: cache_paths
         run: |
           echo "::set-output name=mod::$(go env GOMODCACHE)"
           echo "::set-output name=build::$(go env GOCACHE)"
