@@ -20,9 +20,19 @@ jobs:
         with:
           go-version: '1.16.*'
 
-      - run: |
-          echo $GOPATH
-          echo $GOCACHE
+      - id: cache_paths
+        run: |
+          echo "::set-output name=mod::$(go env GOMODCACHE)"
+          echo "::set-output name=build::$(go env GOCACHE)"
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ${{ steps.cache_paths.outputs.mod }}
+            ${{ steps.cache_paths.outputs.build }}
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
 
       - name: Build
         run: go build -v .
