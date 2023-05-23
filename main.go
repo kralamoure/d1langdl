@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
-	"math/rand"
+	randpkg "math/rand"
 	"net/http"
 	"net/url"
 	"os"
@@ -79,9 +79,8 @@ func main() {
 		logger = tmp.Sugar()
 	}
 
-	rand.Seed(time.Now().UnixNano())
-
-	err = run()
+	rand := randpkg.New(randpkg.NewSource(time.Now().UnixNano()))
+	err = run(rand)
 	if err != nil {
 		logger.Error(err)
 		os.Exit(1)
@@ -93,7 +92,7 @@ func main() {
 	}
 }
 
-func run() error {
+func run(rand *randpkg.Rand) error {
 	defer logger.Sync()
 
 	dataUrlP, err := url.Parse(dataUrlStr)
@@ -108,7 +107,7 @@ func run() error {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		download("lang/versions.swf", false)
+		download("lang/versions.swf", false, rand)
 	}()
 
 	for _, language := range languages {
@@ -116,7 +115,7 @@ func run() error {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			download(filename, true)
+			download(filename, true, rand)
 		}()
 	}
 
@@ -125,7 +124,7 @@ func run() error {
 	return nil
 }
 
-func download(filename string, langVersion bool) {
+func download(filename string, langVersion bool, rand *randpkg.Rand) {
 	var err error
 	defer func() {
 		if err != nil {
@@ -152,7 +151,7 @@ func download(filename string, langVersion bool) {
 		err = errors.Wrap(err, "could not get url")
 	}
 
-	err = ioutil.WriteFile(filepath.Join(outDir, filename), data, 0664)
+	err = os.WriteFile(filepath.Join(outDir, filename), data, 0664)
 	if err != nil {
 		err = errors.Wrap(err, "could not write to file")
 	}
@@ -186,7 +185,7 @@ func download(filename string, langVersion bool) {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			download(fmt.Sprintf("lang/swf/%s_%s_%s.swf", sli[0], sli[1], sli[2]), false)
+			download(fmt.Sprintf("lang/swf/%s_%s_%s.swf", sli[0], sli[1], sli[2]), false, rand)
 		}()
 	}
 }
@@ -203,7 +202,7 @@ func get(url string) ([]byte, error) {
 		return nil, err
 	}
 	defer res.Body.Close()
-	p, err := ioutil.ReadAll(res.Body)
+	p, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
 	}
