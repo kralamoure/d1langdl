@@ -175,6 +175,7 @@ func download(filename string, langVersion bool, rand *randpkg.Rand) {
 	s := query.Get("f")
 	sli := strings.Split(s, "|")
 	for _, langFilename := range sli {
+		langFilename = strings.TrimSpace(langFilename)
 		if langFilename == "" {
 			continue
 		}
