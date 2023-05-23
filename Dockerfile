@@ -1,17 +1,14 @@
-FROM golang:1.16-buster AS builder
+FROM golang:1.20 AS build
 
-WORKDIR /app
+WORKDIR /go/src/app
 COPY . .
 
-RUN go install -v ./...
+RUN go mod download
+RUN CGO_ENABLED=0 go build -o /go/bin/retrolangdl .
 
-FROM ubuntu:20.04
+FROM gcr.io/distroless/static-debian11:latest
 
 LABEL org.opencontainers.image.source="https://github.com/kralamoure/retrolangdl"
 
-RUN apt-get update && apt-get upgrade -y
-
-WORKDIR /app
-COPY --from=builder /go/bin/ .
-
-ENTRYPOINT ["./retrolangdl"]
+COPY --from=build /go/bin/retrolangdl /
+ENTRYPOINT ["/retrolangdl"]
